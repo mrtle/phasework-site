@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import logoUrl from "@/assets/vaporware-logo.webp";
+import { CredentialsStrip } from "@/components/credentials-strip";
 
 export const Route = createFileRoute("/startups")({
   staticData: { sitemap: true },
@@ -64,10 +65,7 @@ function Startups() {
           </div>
         </section>
 
-        <section className="credentials-strip" aria-label="Studio credentials">
-          <p>Fortune 300, YC &amp; a16z-backed clients</p>
-          <p><strong>200M+</strong> lifetime total impressions</p>
-        </section>
+        <CredentialsStrip />
 
         <section className="studio-plate">
           <div className="studio-header spec">

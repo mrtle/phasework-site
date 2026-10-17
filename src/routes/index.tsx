@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import logoUrl from "@/assets/vaporware-logo.webp";
 import { ClientProof } from "@/components/client-proof";
+import { CredentialsStrip } from "@/components/credentials-strip";
 
 type Project = {
   title: string;
@@ -162,10 +163,7 @@ function Index() {
 
         <div className="hazard-strip" aria-hidden="true" />
 
-        <section className="credentials-strip" aria-label="Studio credentials">
-          <p>Fortune 300, YC &amp; a16z-backed clients</p>
-          <p><strong>200M+</strong> lifetime total impressions</p>
-        </section>
+        <CredentialsStrip />
 
         <section id="work" className="featured-film scroll-mt-4">
           <div className="section-strip spec">

@@ -124,11 +124,12 @@
   .credentials-strip p { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.75rem 1rem; min-width: 0; padding: 1rem; font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; line-height: 1.1; text-transform: uppercase; letter-spacing: -0.01em; }
   .credentials-strip p + p { border-top: 1px solid color-mix(in oklab, var(--primary-foreground) 25%, transparent); }
   .credentials-strip strong { font-family: var(--font-display); font-size: 2.75rem; font-weight: 900; line-height: 0.9; letter-spacing: -0.03em; }
-  .credentials-strip .credentials-clients { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 0.75rem; letter-spacing: 0; line-height: 1.25; }
-  .credentials-backing { display: flex; flex-wrap: wrap; align-items: center; gap: 0.55rem; max-width: 100%; }
+  /* "Fortune 300, [YC] & [a16z]-backed clients": logos sit inline in the sentence, black on orange like the type. */
+  .credentials-strip .credentials-clients { display: flex; flex-wrap: wrap; align-items: center; align-content: flex-start; justify-content: flex-start; gap: 0.5rem 0.55rem; }
+  .credentials-backing { display: inline-flex; align-items: center; gap: 0.2rem; white-space: nowrap; }
   .credentials-logo { display: block; flex: none; object-fit: contain; filter: brightness(0); }
-  .credentials-logo-yc { width: 2rem; height: 2rem; }
-  .credentials-logo-a16z { width: 3.8rem; height: 1.65rem; }
+  .credentials-logo-yc { width: 1.6rem; height: 1.6rem; }
+  .credentials-logo-a16z { width: 5.05rem; height: 1.6rem; }
   .credentials-backing-label { white-space: nowrap; }
 
   .client-proof { border-bottom: 1px solid var(--border); background: var(--background); }
@@ -213,6 +214,8 @@
   .credentials-strip p { min-height: 8rem; padding: 1.5rem; font-size: 1.35rem; }
   .credentials-strip strong { font-size: 4rem; }
   .credentials-strip p + p { border-top: 0; border-left: 1px solid var(--rule-light); }
+  .credentials-logo-yc { width: 2rem; height: 2rem; }
+  .credentials-logo-a16z { width: 6.32rem; height: 2rem; }
   .featured-stage { padding: 1.5rem; }
   .feature-meta { grid-template-columns: 5rem minmax(0, 1fr) minmax(14rem, 0.65fr); padding: 1.5rem; align-items: start; }
   .feature-meta h2 { font-size: 3rem; }
@@ -245,6 +248,7 @@
   .hero-status { align-items: flex-start; gap: 0.4rem 1rem; }
   .hero-title-cell h1 { font-size: 2.75rem; }
   .credentials-strip p { display: grid; justify-content: stretch; }
+  .credentials-strip .credentials-clients { display: flex; justify-content: flex-start; }
   .credentials-strip strong { display: block; }
   .project-meta { grid-template-columns: 3.25rem minmax(0, 1fr); }
   .project-number { font-size: 2.25rem; }

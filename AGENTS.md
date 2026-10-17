@@ -14,4 +14,5 @@
 - Typography: Archivo (800–900, uppercase, tight tracking) for display headlines and JetBrains Mono for labels/specs (replaces Oswald and Satoshi), per the user's American-dynamism direction.
 - Visual direction: black + orange broadcast theme with bold American-dynamism energy; the red rec-room variant was rejected. Keep all metadata factual and avoid decorative cosplay.
 - Present studio credentials as supplied facts: 200M+ lifetime impressions, Fortune 300/YC/a16z-backed clients, established 2021, and San Francisco/Los Angeles.
+- The orange credentials band (home + /startups) is `src/components/credentials-strip.tsx`: "Fortune 300, [YC] & [a16z]-backed clients" with official marks in `src/assets/credentials` (YC from Simple Icons, a16z's current "Andreessen Horowitz" wordmark from a16z.com), shown black on orange.
 - Client proof uses a curated static logo strip with local SVG files in `src/assets/clients`, not runtime logo lookup, because the client roster is known.
