@@ -73,8 +73,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       // Share-preview image (previously injected by Lovable hosting; now self-hosted in /public).
-      { property: "og:image", content: "https://phasework.work/og-image.png?v=3" },
-      { name: "twitter:image", content: "https://phasework.work/og-image.png?v=3" },
+      { property: "og:image", content: "https://phasework.work/og-image.png?v=4" },
+      { name: "twitter:image", content: "https://phasework.work/og-image.png?v=4" },
     ],
     links: [
       {

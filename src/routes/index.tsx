@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import type { CSSProperties } from "react";
 import logoUrl from "@/assets/vaporware-logo.webp";
 import { ClientProof } from "@/components/client-proof";
 import { CredentialsStrip } from "@/components/credentials-strip";
@@ -146,13 +147,19 @@ function Index() {
           <RegistrationMarks />
           <div className="hero-title-cell">
             <p className="hero-kicker">Hard work made easy to understand.</p>
-            <h1>PHASE<span>WORK</span></h1>
           </div>
-          <div className="hero-signal-cell">
-            <span className="spec">Direction // Motion // VFX</span>
-            <p>Make the<br />future felt.</p>
+          <div className="hero-spec">
+            <div className="hero-spec-bar spec"><span>Spec sheet</span><span>PW-01</span></div>
+            <dl className="hero-spec-rows spec">
+              <div><dt>Output</dt><dd>Launch films · Brand stories · VFX · Motion</dd></div>
+              <div><dt>Clients</dt><dd>Fortune 300 · YC &amp; a16z-backed</dd></div>
+              <div><dt>Base</dt><dd>San Francisco · Los Angeles</dd></div>
+              <div><dt>Est.</dt><dd>2021</dd></div>
+              <div><dt>Status</dt><dd className="bracket-state">Available worldwide</dd></div>
+            </dl>
           </div>
           <div className="hero-quiet-cell" aria-hidden="true"><img src={logoUrl} alt="" /></div>
+          <h1 className="hero-wordmark"><span className="hero-wordmark-fit"><span className="wm" style={{ "--em-width": 8.762 } as CSSProperties}><span className="wm-base">Phasework</span><span className="wm-cut" aria-hidden="true">Phasework</span></span></span></h1>
           <div className="hero-readout spec">
             <span>Independent // Global</span>
             <a href="#work">View films ↓</a>

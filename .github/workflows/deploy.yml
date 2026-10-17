@@ -1,9 +1,10 @@
 # Builds the site and publishes it to GitHub Pages.
 #
-# Two designs live in this repo:
-#   main    = the current design (FIELD STANDARD rebrand, Oct 2026)
-#   classic = the black + orange design from before the rebrand (frozen)
-# LIVE_DESIGN (a file on main) says which one is published.
+# Several designs live in this repo, one per branch:
+#   main     = the current design
+#   field-v1 = the first FIELD STANDARD rebrand (two-line PHASE / WORK hero, orange slogan cell)
+#   classic  = the black + orange design from before the rebrand
+# LIVE_DESIGN (a file on main) names the branch that gets published.
 #
 # To switch which design is live (one run, from the GitHub website or app):
 #   Actions → "Deploy to GitHub Pages" → Run workflow → pick a design → Run.
@@ -21,8 +22,9 @@ on:
         default: keep current
         options:
           - keep current
-          - new
-          - classic
+          - new (main)
+          - field-v1 (first rebrand)
+          - classic (black + orange)
 
 permissions:
   contents: write
@@ -44,7 +46,11 @@ jobs:
       - name: Save the design choice
         if: github.event_name == 'workflow_dispatch' && inputs.design != 'keep current'
         run: |
-          if [ "${{ inputs.design }}" = "classic" ]; then echo classic > LIVE_DESIGN; else echo main > LIVE_DESIGN; fi
+          case "${{ inputs.design }}" in
+            classic*)  echo classic  > LIVE_DESIGN ;;
+            field-v1*) echo field-v1 > LIVE_DESIGN ;;
+            *)         echo main     > LIVE_DESIGN ;;
+          esac
           if ! git diff --quiet -- LIVE_DESIGN; then
             git config user.name "github-actions[bot]"
             git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
@@ -56,7 +62,7 @@ jobs:
         id: pick
         run: |
           design=$(tr -d '[:space:]' < LIVE_DESIGN 2>/dev/null || echo main)
-          case "$design" in classic) ref=classic ;; *) ref=main ;; esac
+          case "$design" in classic|field-v1) ref=$design ;; *) ref=main ;; esac
           echo "ref=$ref" >> "$GITHUB_OUTPUT"
           echo "Publishing the '$ref' design" >> "$GITHUB_STEP_SUMMARY"
 

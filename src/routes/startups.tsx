@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import type { CSSProperties } from "react";
 import logoUrl from "@/assets/vaporware-logo.webp";
 import { CredentialsStrip } from "@/components/credentials-strip";
 
@@ -33,6 +34,15 @@ export const Route = createFileRoute("/startups")({
   component: Startups,
 });
 
+function RegistrationMarks() {
+  return (
+    <div className="registration-marks" aria-hidden="true">
+      <i className="reg reg-tl" /><i className="reg reg-tr" />
+      <i className="reg reg-bl" /><i className="reg reg-br" />
+    </div>
+  );
+}
+
 function Startups() {
   return (
     <div id="top" className="site-shell">
@@ -50,15 +60,22 @@ function Startups() {
 
       <main>
         <section className="hero-plate animate-build">
+          <RegistrationMarks />
           <div className="hero-title-cell">
             <p className="hero-kicker">Video production for startups.</p>
-            <h1>LAUNCH<span> FILMS</span></h1>
           </div>
-          <div className="hero-signal-cell">
-            <span className="spec">Direction // Motion // VFX</span>
-            <p>Make your<br />launch land.</p>
+          <div className="hero-spec">
+            <div className="hero-spec-bar spec"><span>Spec sheet</span><span>For startups</span></div>
+            <dl className="hero-spec-rows spec">
+              <div><dt>Output</dt><dd>Launch films · Brand stories · VFX · Motion</dd></div>
+              <div><dt>For</dt><dd>Startups · YC &amp; a16z-backed</dd></div>
+              <div><dt>Base</dt><dd>San Francisco · Los Angeles</dd></div>
+              <div><dt>Field</dt><dd>Location and gear rental included</dd></div>
+              <div><dt>Brief</dt><dd>Make your launch land.</dd></div>
+            </dl>
           </div>
           <div className="hero-quiet-cell" aria-hidden="true"><img src={logoUrl} alt="" /></div>
+          <h1 className="hero-wordmark"><span className="hero-wordmark-fit"><span className="wm" style={{ "--em-width": 10.041 } as CSSProperties}><span className="wm-base">Launch films</span><span className="wm-cut" aria-hidden="true">Launch films</span></span></span></h1>
           <div className="hero-readout spec">
             <span>Independent // Global</span>
             <a href="#contact">Start a project ↓</a>
