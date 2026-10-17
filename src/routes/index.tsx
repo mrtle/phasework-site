@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import logoAsset from "@/assets/vaporware-logo.png.asset.json";
+import logoUrl from "@/assets/vaporware-logo.webp";
 import { ClientProof } from "@/components/client-proof";
 
 type Project = {
@@ -110,6 +110,11 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Phasework — Films for Technology Companies" },
+      {
+        name: "twitter:description",
+        content: "An independent production studio making technology clear, cinematic, and worth watching.",
+      },
     ],
   }),
   component: Index,
@@ -123,7 +128,7 @@ function Index() {
     <div id="top" className="site-shell">
       <header className="masthead plate-rule">
         <a className="brand-lockup" href="#top" aria-label="Phasework home">
-          <span className="brand-logo"><img src={logoAsset.url} alt="" /></span>
+          <span className="brand-logo"><img src={logoUrl} alt="" /></span>
           <span className="brand-name">Phasework</span>
         </a>
         <p className="spec masthead-note">Independent production studio</p>
@@ -146,7 +151,7 @@ function Index() {
             <span className="spec">Direction // Motion // VFX</span>
             <p>Make the<br />future felt.</p>
           </div>
-          <div className="hero-quiet-cell" aria-hidden="true"><img src={logoAsset.url} alt="" /></div>
+          <div className="hero-quiet-cell" aria-hidden="true"><img src={logoUrl} alt="" /></div>
           <div className="hero-readout spec">
             <span>Independent // Global</span>
             <a href="#work">View films ↓</a>
@@ -200,7 +205,7 @@ function Index() {
             );
           })}
           <div className="archive-filler" aria-hidden="true">
-            <img src={logoAsset.url} alt="" />
+            <img src={logoUrl} alt="" />
             <span className="spec">Phasework // More soon</span>
           </div>
         </section>

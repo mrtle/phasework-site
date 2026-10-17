@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import logoAsset from "@/assets/vaporware-logo.png.asset.json";
+import logoUrl from "@/assets/vaporware-logo.webp";
 
 export const Route = createFileRoute("/startups")({
   staticData: { sitemap: true },
@@ -20,6 +20,12 @@ export const Route = createFileRoute("/startups")({
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://vaporware.work/startups" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Video Production for Startups — Phasework" },
+      {
+        name: "twitter:description",
+        content:
+          "Launch films, brand stories, VFX, and motion for startups. 200M+ lifetime impressions across Fortune 300, YC, and a16z-backed clients.",
+      },
     ],
     links: [{ rel: "canonical", href: "https://vaporware.work/startups" }],
   }),
@@ -31,7 +37,7 @@ function Startups() {
     <div id="top" className="site-shell">
       <header className="masthead plate-rule">
         <Link className="brand-lockup" to="/" aria-label="Phasework home">
-          <span className="brand-logo"><img src={logoAsset.url} alt="" /></span>
+          <span className="brand-logo"><img src={logoUrl} alt="" /></span>
           <span className="brand-name">Phasework</span>
         </Link>
         <p className="spec masthead-note">Independent production studio</p>
@@ -51,7 +57,7 @@ function Startups() {
             <span className="spec">Direction // Motion // VFX</span>
             <p>Make your<br />launch land.</p>
           </div>
-          <div className="hero-quiet-cell" aria-hidden="true"><img src={logoAsset.url} alt="" /></div>
+          <div className="hero-quiet-cell" aria-hidden="true"><img src={logoUrl} alt="" /></div>
           <div className="hero-readout spec">
             <span>Independent // Global</span>
             <a href="#contact">Start a project ↓</a>

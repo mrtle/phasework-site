@@ -1,29 +1,33 @@
-# Welcome to your Lovable project
+# Phasework — phasework.work
 
-This project was built with [Lovable](https://lovable.dev).
+Portfolio site for Phasework, an independent production studio making films for technology companies.
 
-## Build with Lovable
+Originally built in Lovable; moved to this repo in October 2026 and hosted free on GitHub Pages.
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+## How it deploys
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+Push to `main` → GitHub Actions builds the site → GitHub Pages serves it at https://phasework.work.
+The whole site is prerendered to static HTML, so there's no server to run or pay for.
 
-## Development
+## Editing
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Most content lives in:
+
+- `src/routes/index.tsx` — home page (films list, studio section, contact)
+- `src/routes/startups.tsx` — /startups page
+- `src/components/client-proof.tsx` — client logo strip
+- `src/styles.css` — all styling
+
+## Running locally
+
+Requires [Bun](https://bun.sh) and Node.js 20+.
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+bun install
+bun run dev      # local dev server
+bun run build    # static build into dist/client
 ```
 
 ## Built with
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+TanStack Start, React, TypeScript, Tailwind CSS.
