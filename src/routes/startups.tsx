@@ -75,7 +75,7 @@ function Startups() {
             </dl>
           </div>
           <div className="hero-quiet-cell" aria-hidden="true"><img src={logoUrl} alt="" /></div>
-          <h1 className="hero-wordmark"><span className="hero-wordmark-fit"><span className="wm" style={{ "--em-width": 10.041 } as CSSProperties}><span className="wm-base">Launch films</span><span className="wm-cut" aria-hidden="true">Launch films</span></span></span></h1>
+          <h1 className="hero-wordmark"><span className="hero-wordmark-fit"><span className="wm" style={{ "--em-width": 10.041 } as CSSProperties}><span className="wm-base">Launch films</span><span className="wm-cut" aria-hidden="true" data-text="Launch films" /></span></span></h1>
           <div className="hero-readout spec">
             <span>Independent // Global</span>
             <a href="#contact">Start a project ↓</a>

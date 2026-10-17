@@ -159,7 +159,7 @@ function Index() {
             </dl>
           </div>
           <div className="hero-quiet-cell" aria-hidden="true"><img src={logoUrl} alt="" /></div>
-          <h1 className="hero-wordmark"><span className="hero-wordmark-fit"><span className="wm" style={{ "--em-width": 8.762 } as CSSProperties}><span className="wm-base">Phasework</span><span className="wm-cut" aria-hidden="true">Phasework</span></span></span></h1>
+          <h1 className="hero-wordmark"><span className="hero-wordmark-fit"><span className="wm" style={{ "--em-width": 8.762 } as CSSProperties}><span className="wm-base">Phasework</span><span className="wm-cut" aria-hidden="true" data-text="Phasework" /></span></span></h1>
           <div className="hero-readout spec">
             <span>Independent // Global</span>
             <a href="#work">View films ↓</a>

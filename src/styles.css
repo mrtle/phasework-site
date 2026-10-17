@@ -155,7 +155,8 @@
   .wm { --cut: 49%; --word-stripes: repeating-linear-gradient(to bottom, var(--ink) 0 0.028em, transparent 0.028em 0.056em); position: relative; display: block; margin-right: -0.02em; font-family: var(--font-wide); font-size: calc(99.5cqi / var(--em-width)); font-stretch: 125%; font-weight: 800; line-height: 1; letter-spacing: 0.02em; text-transform: uppercase; white-space: nowrap; color: var(--ink); }
   /* Signature cut: solid bottom half, and the top half of the same word stripe-filled and slipped one gap left. */
   .wm-base { display: block; clip-path: inset(var(--cut) 0 0 0); }
-  .wm-cut { position: absolute; inset: 0; transform: translateX(-0.035em); color: transparent; background-image: var(--word-stripes); -webkit-background-clip: text; background-clip: text; clip-path: inset(0 0 calc(100% - var(--cut)) 0); pointer-events: none; }
+  .wm-cut { position: absolute; inset: 0; transform: translateX(-0.035em); clip-path: inset(0 0 calc(100% - var(--cut)) 0); pointer-events: none; }
+  .wm-cut::before { content: attr(data-text); display: block; color: transparent; background-image: var(--word-stripes); -webkit-background-clip: text; background-clip: text; }
   .hero-spec-rows dd.bracket-state { color: var(--signal); }
   .hero-readout { grid-area: readout; display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.6rem 0.6rem 0.6rem 1rem; border-top: 1px solid var(--rule-ink); }
   .hero-readout a { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0 1.1rem; border: 1px solid var(--ink); font-weight: 500; transition: background-color 120ms ease, color 120ms ease; }
