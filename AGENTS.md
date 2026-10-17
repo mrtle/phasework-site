@@ -1,20 +1,27 @@
 ## Hosting (moved off Lovable, Oct 2026)
 
 - Live at https://phasework.work, hosted free on GitHub Pages from this repo (branch `main`).
-- Every push to `main` runs `.github/workflows/deploy.yml`: `bun install --frozen-lockfile`, `bun run build`, then publishes `dist/client`.
+- Every push to `main` runs `.github/workflows/deploy.yml`: it builds the branch named in `LIVE_DESIGN` (`bun install --frozen-lockfile`, `bun run build`) and publishes `dist/client`.
 - The build is fully static: TanStack Start prerenders `/` → `index.html`, `/startups` → `startups.html`, `/sitemap.xml`, and `scripts/write-404.mjs` renders `404.html`. There is no server at runtime, so don't add server functions or API routes without moving hosting.
 - New pages: add the route file and add its path to `pages` in `vite.config.ts` so it gets prerendered.
 - Images live in `src/assets` (imported, so Vite fingerprints them) or `public/` (served as-is, e.g. `og-image.png`, `favicon.png`, `CNAME`).
 - DNS (Namecheap): `@` A records → 185.199.108.153 / .109 / .110 / .111, `www` CNAME → mrtle.github.io. Leave the MX/SPF email-forwarding records alone.
 
+## Design switch (new vs classic)
+
+- `main` = current design (FIELD STANDARD rebrand). `classic` = the black + orange design from before it, frozen at commit 6a20d35.
+- `LIVE_DESIGN` on main (`main` or `classic`) decides which branch the deploy builds. To switch: GitHub → Actions → "Deploy to GitHub Pages" → Run workflow → choose `new` or `classic`. The run saves the choice and redeploys; later pushes keep publishing that design.
+- Fixes meant for both designs must be made on both branches. Pushing to `classic` doesn't deploy by itself; run the workflow afterwards if classic is live.
+
 ## Architecture
 
 - Keep portfolio projects in the `projects` list on the home page so a standard YouTube URL is the only media configuration required.
 - The studio is "Phasework" (renamed from Vaporware, Oct 2026): never reintroduce Vaporware branding; keep the exact uploaded V mark. Contact email is team@phasework.work. (Canonical/sitemap/robots URLs still say vaporware.work — carried over unchanged from Lovable; update only when the user says so.)
-- Typography: Archivo (800–900, uppercase, tight tracking) for display headlines and JetBrains Mono for labels/specs (replaces Oswald and Satoshi), per the user's American-dynamism direction.
-- Visual direction: black + orange broadcast theme with bold American-dynamism energy; the red rec-room variant was rejected. Keep all metadata factual and avoid decorative cosplay.
+- Brand system (Oct 2026): the user's FIELD STANDARD brand kit ("industrial documentation" look). Phasework intake: MODE INDUSTRIAL · PALETTE DYNAMISM (signal #FF4F14, ink #121212, paper #EDE8DC; ink type on orange) · TYPE STACK A (Display Inter Tight 700–800 sentence case; Wide Archivo 125% 800 for the PHASEWORK wordmark only; Spec JetBrains Mono ALL CAPS +0.06em for all metadata). Tokens and rules are at the top of `src/styles.css`.
+- Kit rules to keep: three colors only (no second bright, no gradients, no rounded corners, no shadows); 1px hairline rules; one display treatment per page (stripe fill on the second hero word: WORK / FILMS); devices limited to corner crosshairs, [ bracket states ], one 24px hazard band, readout strips; every spec line must be true (no invented IDs, coordinates or certifications). Section rhythm: paper hero with one signal cell → paper logo belt → signal credentials plate → ink film plate → paper studio plate → signal contact band.
+- Visual direction history: Lovable-era black + orange "broadcast" look (Archivo 900 + JetBrains Mono) is frozen on the `classic` branch; the red rec-room variant was rejected earlier.
 - Present studio credentials as supplied facts: 200M+ lifetime impressions, Fortune 300/YC/a16z-backed clients, established 2021, and San Francisco/Los Angeles.
-- The orange credentials band (home + /startups) is `src/components/credentials-strip.tsx`: "Fortune 300, [YC] & [a16z]-backed clients" with official marks in `src/assets/credentials` (YC from Simple Icons, a16z's current "Andreessen Horowitz" wordmark from a16z.com), shown black on orange.
-- Client proof ("Worked with", under the hero) is a conveyor-belt marquee in `src/components/client-proof.tsx`: 15 logos picked by the user's brief ("only the most impressive") from his approved 66-company Logo Wall Ledger, local SVGs in `src/assets/clients` shown white on black. Edit the `clients` array to change it; `size` balances each logo's visual weight. The list renders twice so the loop is seamless; it pauses on hover and sits still (wrapped) under prefers-reduced-motion.
+- The orange credentials band (home + /startups) is `src/components/credentials-strip.tsx`: "Fortune 300" / "Clients + startups backed by" [YC mark + "Y Combinator"] | [a16z wordmark], and "200M+" / "Lifetime total impressions". Logos sit after the sentence, never inside it (user disliked logos mixed into the text). Marks in `src/assets/credentials` (YC from Simple Icons, a16z's "Andreessen Horowitz" wordmark from a16z.com), shown black on orange.
+- Client proof ("Worked with", under the hero) is a conveyor-belt marquee in `src/components/client-proof.tsx`: 13 logos the user asked for ("only the most impressive") from his approved 66-company Logo Wall Ledger, local SVGs in `src/assets/clients` shown ink on paper. Edit the `clients` array to change it; `size` balances each logo's visual weight. Apple + Netflix are first and start centred on every load (three copies of the list, CSS-only via cqw). Pauses on hover; static and wrapped under prefers-reduced-motion. Spare marks: acura.svg, white-claw.svg. (The kit discourages marquees and third-party logos; both stay because the user asked for them.)
 - Logo sources: Apple/Netflix/Adobe/HubSpot/DJI/Asana/Lovable came from the Lovable build; 2K/Acura/ASUS/WWE from Simple Icons; Sony Pictures (sonypictures.com header SVG), PGA TOUR (pgatour.com shield, navy made transparent so it reads on black), Sundance Film Festival (festival.sundance.org wordmark, year removed), White Claw (traced from whiteclaw.com's logo image).
 - Home copy: hero kicker "Hard work made easy to understand.", studio statement "Who we work with" / "For the best, and only the best" (user's exact wording, no period).

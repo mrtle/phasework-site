@@ -136,8 +136,8 @@ function Index() {
         <nav className="spec" aria-label="Primary navigation">
           <a href="#work">Work</a><span>//</span>
           <Link to="/startups">Startups</Link><span>//</span>
-          <a href="#studio">Studio</a><span>//</span>
-          <a href="#contact">Contact</a>
+          <a href="#studio">Studio</a>
+          <a className="btn nav-button" href="#contact">Contact</a>
         </nav>
       </header>
 
@@ -207,8 +207,6 @@ function Index() {
             <span className="spec">Phasework // More soon</span>
           </div>
         </section>
-
-        <div className="hazard-strip" aria-hidden="true" />
 
         <section id="studio" className="studio-plate scroll-mt-4">
           <div className="studio-header spec">

@@ -43,8 +43,8 @@ function Startups() {
         </Link>
         <p className="spec masthead-note">Independent production studio</p>
         <nav className="spec" aria-label="Primary navigation">
-          <Link to="/">Work</Link><span>//</span>
-          <a href="#contact">Contact</a>
+          <Link to="/">Work</Link>
+          <a className="btn nav-button" href="#contact">Contact</a>
         </nav>
       </header>
 

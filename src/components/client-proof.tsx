@@ -66,8 +66,7 @@ function LogoList({ hidden = false }: { hidden?: boolean }) {
 }
 
 // Centre of the first two logos, in conveyor units, so the belt can start with them mid-screen.
-const [first, second] = clients;
-const leadPairCenter = (first.size * first.ratio + second.size * second.ratio) / 2;
+const leadPairCenter = clients.slice(0, 2).reduce((sum, c) => sum + c.size * c.ratio, 0) / 2;
 
 // "Worked with" conveyor: the list renders three times side by side and every copy slides left
 // by its own width, so the belt loops without a seam. It starts one copy in, with the lead pair
