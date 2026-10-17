@@ -1,13 +1,31 @@
-# Builds the site and publishes it to GitHub Pages on every push to main.
+# Builds the site and publishes it to GitHub Pages.
+#
+# Two designs live in this repo:
+#   main    = the current design (FIELD STANDARD rebrand, Oct 2026)
+#   classic = the black + orange design from before the rebrand (frozen)
+# LIVE_DESIGN (a file on main) says which one is published.
+#
+# To switch which design is live (one run, from the GitHub website or app):
+#   Actions → "Deploy to GitHub Pages" → Run workflow → pick a design → Run.
+# The choice is saved to LIVE_DESIGN, so later pushes keep publishing that design.
 name: Deploy to GitHub Pages
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      design:
+        description: Which design should be live?
+        type: choice
+        default: keep current
+        options:
+          - keep current
+          - new
+          - classic
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -20,6 +38,34 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Save the design choice
+        if: github.event_name == 'workflow_dispatch' && inputs.design != 'keep current'
+        run: |
+          if [ "${{ inputs.design }}" = "classic" ]; then echo classic > LIVE_DESIGN; else echo main > LIVE_DESIGN; fi
+          if ! git diff --quiet -- LIVE_DESIGN; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Switch live design to ${{ inputs.design }}" -- LIVE_DESIGN
+            git push origin HEAD:main
+          fi
+
+      - name: Pick the branch to build
+        id: pick
+        run: |
+          design=$(tr -d '[:space:]' < LIVE_DESIGN 2>/dev/null || echo main)
+          case "$design" in classic) ref=classic ;; *) ref=main ;; esac
+          echo "ref=$ref" >> "$GITHUB_OUTPUT"
+          echo "Publishing the '$ref' design" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Check out the live design
+        if: steps.pick.outputs.ref != 'main'
+        run: |
+          git fetch --depth=1 origin "${{ steps.pick.outputs.ref }}"
+          git checkout --force FETCH_HEAD
+
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: 1.4.2
