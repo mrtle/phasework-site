@@ -193,7 +193,7 @@
   .feature-meta { display: grid; grid-template-columns: 3.5rem minmax(0, 1fr); gap: 1rem; padding: 1.25rem 1rem 1.5rem; border-top: 1px solid var(--rule-paper); }
   .feature-meta p, .project-meta p { margin-top: 0.8rem; color: var(--on-ink-2); }
   .project-number { font-family: var(--font-mono); font-size: 2.25rem; font-weight: 500; line-height: 0.95; font-variant-numeric: tabular-nums; color: var(--signal); letter-spacing: -0.02em; }
-  .feature-meta h2 { min-width: 0; max-width: 20ch; font-size: 2rem; font-weight: 700; line-height: 1.02; letter-spacing: var(--track-h2); overflow-wrap: break-word; text-wrap: balance; }
+  .feature-meta h2 { min-width: 0; font-size: 2rem; font-weight: 700; line-height: 1.02; letter-spacing: var(--track-h2); overflow-wrap: break-word; }
 
   .archive-grid { display: grid; gap: 1px; background: var(--rule-paper); border-bottom: 1px solid var(--rule-ink); }
   .project-plate { min-width: 0; background: var(--ink); color: var(--paper); transition: background-color 120ms ease, color 120ms ease; }
@@ -203,7 +203,7 @@
   .project-plate:hover .project-meta p { color: var(--ink-2); }
   .project-plate .film-frame { border-bottom: 1px solid var(--rule-paper); }
   .project-meta { display: grid; grid-template-columns: 3.5rem minmax(0, 1fr); gap: 1rem; min-height: 9rem; padding: 1.25rem 1rem 1.5rem; align-content: start; }
-  .project-meta h3 { min-width: 0; max-width: 22ch; font-size: 1.6rem; font-weight: 700; line-height: 1.05; letter-spacing: -0.02em; overflow-wrap: break-word; text-wrap: balance; }
+  .project-meta h3 { min-width: 0; font-size: 1.6rem; font-weight: 700; line-height: 1.05; letter-spacing: -0.02em; overflow-wrap: break-word; }
 
   /* ---- Studio: paper plate ---- */
   .studio-plate { background: var(--paper); color: var(--ink); border-bottom: 1px solid var(--rule-ink); }
