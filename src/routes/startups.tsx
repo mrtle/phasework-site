@@ -61,7 +61,7 @@ function Startups() {
         <section className="hero-plate animate-build">
           <RegistrationMarks />
           <div className="hero-title-cell">
-            <p className="hero-kicker">Video production for startups.</p>
+            <p className="hero-kicker">Make your launch land.</p>
             <a className="btn hero-cta" href="#contact">Start a project ↓</a>
           </div>
           <ul className="hero-facts spec">
