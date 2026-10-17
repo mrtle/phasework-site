@@ -133,7 +133,6 @@ function Index() {
           <span className="brand-logo"><img src={logoUrl} alt="" /></span>
           <span className="brand-name">Phasework</span>
         </a>
-        <p className="spec masthead-note">Independent production studio</p>
         <nav className="spec" aria-label="Primary navigation">
           <a href="#work">Work</a><span>//</span>
           <Link to="/startups">Startups</Link><span>//</span>
@@ -147,23 +146,15 @@ function Index() {
           <RegistrationMarks />
           <div className="hero-title-cell">
             <p className="hero-kicker">Hard work made easy to understand.</p>
+            <a className="btn hero-cta" href="#work">View films ↓</a>
           </div>
-          <div className="hero-spec">
-            <div className="hero-spec-bar spec"><span>Spec sheet</span><span>PW-01</span></div>
-            <dl className="hero-spec-rows spec">
-              <div><dt>Output</dt><dd>Launch films · Brand stories · VFX · Motion</dd></div>
-              <div><dt>Clients</dt><dd>Fortune 300 · YC &amp; a16z-backed</dd></div>
-              <div><dt>Base</dt><dd>San Francisco · Los Angeles</dd></div>
-              <div><dt>Est.</dt><dd>2021</dd></div>
-              <div><dt>Status</dt><dd className="bracket-state">Available worldwide</dd></div>
-            </dl>
-          </div>
+          <ul className="hero-facts spec">
+            <li>Launch films · Brand stories · VFX · Motion</li>
+            <li>Fortune 300 · YC &amp; a16z-backed clients</li>
+            <li>San Francisco · Los Angeles · Est. 2021</li>
+          </ul>
           <div className="hero-quiet-cell" aria-hidden="true"><img src={logoUrl} alt="" /></div>
           <h1 className="hero-wordmark"><span className="hero-wordmark-fit"><span className="wm" style={{ "--em-width": 8.762 } as CSSProperties}><span className="wm-base">Phasework</span><span className="wm-cut" aria-hidden="true" data-text="Phasework" /></span></span></h1>
-          <div className="hero-readout spec">
-            <span>Independent // Global</span>
-            <a href="#work">View films ↓</a>
-          </div>
         </section>
 
         <ClientProof />
@@ -173,22 +164,15 @@ function Index() {
         <CredentialsStrip />
 
         <section id="work" className="featured-film scroll-mt-4">
-          <div className="section-strip spec">
-            <span>01 // Featured film</span>
-            <span>{featured.client}</span>
-            <span className="bracket-state">Play</span>
-          </div>
           <div className="featured-stage">
             <Film project={featured} title={`Featured film: ${featured.title}`} />
           </div>
           <div className="feature-meta">
             <span className="project-number">01</span>
-            <h2>{featured.title}</h2>
-            <dl className="spec-list spec">
-              <div><dt>Client</dt><dd>{featured.client}</dd></div>
-              <div><dt>Director</dt><dd>{featured.director}</dd></div>
-              <div><dt>Format</dt><dd>Film // 16:9</dd></div>
-            </dl>
+            <div>
+              <h2>{featured.title}</h2>
+              <p className="spec">{featured.client} · Directed by {featured.director}</p>
+            </div>
           </div>
         </section>
 
@@ -197,29 +181,17 @@ function Index() {
             const number = String(index + 2).padStart(2, "0");
             return (
               <article className="project-plate" key={project.youtubeUrl}>
-                <div className="project-strip spec">
-                  <span>PW-FILM-{number}</span>
-                  <span>{project.client}</span>
-                </div>
                 <Film project={project} />
                 <div className="project-meta">
                   <span className="project-number">{number}</span>
-                  <div><h3>{project.title}</h3><p className="spec">Director // {project.director}</p></div>
+                  <div><h3>{project.title}</h3><p className="spec">{project.client} · Directed by {project.director}</p></div>
                 </div>
               </article>
             );
           })}
-          <div className="archive-filler" aria-hidden="true">
-            <img src={logoUrl} alt="" />
-            <span className="spec">Phasework // More soon</span>
-          </div>
         </section>
 
         <section id="studio" className="studio-plate scroll-mt-4">
-          <div className="studio-header spec">
-            <span>Studio profile // PW-02</span>
-            <span className="bracket-state bracket-light">Available worldwide</span>
-          </div>
           <div className="studio-statement">
             <span className="spec">Who we work with</span>
             <h2>For the best, and only the best</h2>
@@ -229,17 +201,15 @@ function Index() {
             <div><span>02</span><strong>Post</strong><p>Edit, VFX, and animation</p></div>
             <div><span>03</span><strong>Field support</strong><p>Location and gear rental included</p></div>
           </div>
-          <div className="studio-readout spec"><span>Phasework // Startup media company // Est. 2021</span><span>San Francisco // Los Angeles // California</span></div>
         </section>
       </main>
 
       <footer id="contact" className="site-footer scroll-mt-4">
-        <div className="contact-label spec"><span>Start a project</span><span>Direct line // Email</span></div>
+        <div className="contact-label spec"><span>Start a project</span></div>
         <a className="contact-link" href="mailto:team@phasework.work">team@<br />phasework.work</a>
         <div className="footer-readout spec">
           <span>© 2026 Phasework</span>
           <div><a href="https://www.instagram.com/mwtle/" rel="noreferrer" target="_blank">Instagram</a><a href="https://www.linkedin.com/in/mrtle/" rel="noreferrer" target="_blank">LinkedIn</a><a href="https://www.youtube.com/@mrwtle" rel="noreferrer" target="_blank">YouTube</a></div>
-          <a href="#top">Top ↑</a>
         </div>
       </footer>
     </div>

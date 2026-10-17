@@ -51,7 +51,6 @@ function Startups() {
           <span className="brand-logo"><img src={logoUrl} alt="" /></span>
           <span className="brand-name">Phasework</span>
         </Link>
-        <p className="spec masthead-note">Independent production studio</p>
         <nav className="spec" aria-label="Primary navigation">
           <Link to="/">Work</Link>
           <a className="btn nav-button" href="#contact">Contact</a>
@@ -63,32 +62,20 @@ function Startups() {
           <RegistrationMarks />
           <div className="hero-title-cell">
             <p className="hero-kicker">Video production for startups.</p>
+            <a className="btn hero-cta" href="#contact">Start a project ↓</a>
           </div>
-          <div className="hero-spec">
-            <div className="hero-spec-bar spec"><span>Spec sheet</span><span>For startups</span></div>
-            <dl className="hero-spec-rows spec">
-              <div><dt>Output</dt><dd>Launch films · Brand stories · VFX · Motion</dd></div>
-              <div><dt>For</dt><dd>Startups · YC &amp; a16z-backed</dd></div>
-              <div><dt>Base</dt><dd>San Francisco · Los Angeles</dd></div>
-              <div><dt>Field</dt><dd>Location and gear rental included</dd></div>
-              <div><dt>Brief</dt><dd>Make your launch land.</dd></div>
-            </dl>
-          </div>
+          <ul className="hero-facts spec">
+            <li>Launch films · Brand stories · VFX · Motion</li>
+            <li>For startups · YC &amp; a16z-backed</li>
+            <li>San Francisco · Los Angeles · Est. 2021</li>
+          </ul>
           <div className="hero-quiet-cell" aria-hidden="true"><img src={logoUrl} alt="" /></div>
           <h1 className="hero-wordmark"><span className="hero-wordmark-fit"><span className="wm" style={{ "--em-width": 10.041 } as CSSProperties}><span className="wm-base">Launch films</span><span className="wm-cut" aria-hidden="true" data-text="Launch films" /></span></span></h1>
-          <div className="hero-readout spec">
-            <span>Independent // Global</span>
-            <a href="#contact">Start a project ↓</a>
-          </div>
         </section>
 
         <CredentialsStrip />
 
         <section className="studio-plate">
-          <div className="studio-header spec">
-            <span>For startups // PW-03</span>
-            <span className="bracket-state bracket-light">Available worldwide</span>
-          </div>
           <div className="studio-statement">
             <span className="spec">Why startups work with us</span>
             <h2>Films built for launches, raises, and the moments that matter.</h2>
@@ -98,17 +85,9 @@ function Startups() {
             <div><span>02</span><strong>Post</strong><p>Edit, VFX, and animation</p></div>
             <div><span>03</span><strong>Field support</strong><p>Location and gear rental included</p></div>
           </div>
-          <div className="studio-readout spec">
-            <span>Phasework // Startup media company // Est. 2021</span>
-            <span>San Francisco // Los Angeles // California</span>
-          </div>
         </section>
 
         <section className="studio-plate">
-          <div className="studio-header spec">
-            <span>Selected clients</span>
-            <span className="bracket-state bracket-light">Startup work</span>
-          </div>
           <div className="studio-statement">
             <span className="spec">Recent startup films</span>
             <h2>Deeptrace, ThirdLayer, StackAI, Mintlify — and Apple.</h2>
@@ -120,12 +99,11 @@ function Startups() {
       </main>
 
       <footer id="contact" className="site-footer scroll-mt-4">
-        <div className="contact-label spec"><span>Start a project</span><span>Direct line // Email</span></div>
+        <div className="contact-label spec"><span>Start a project</span></div>
         <a className="contact-link" href="mailto:team@phasework.work">team@<br />phasework.work</a>
         <div className="footer-readout spec">
           <span>© 2026 Phasework</span>
           <div><a href="https://www.instagram.com/mwtle/" rel="noreferrer" target="_blank">Instagram</a><a href="https://www.linkedin.com/in/mrtle/" rel="noreferrer" target="_blank">LinkedIn</a><a href="https://www.youtube.com/@mrwtle" rel="noreferrer" target="_blank">YouTube</a></div>
-          <a href="#top">Top ↑</a>
         </div>
       </footer>
     </div>
