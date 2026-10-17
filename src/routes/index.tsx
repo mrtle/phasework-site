@@ -131,7 +131,7 @@ function Index() {
       <header className="masthead plate-rule">
         <a className="brand-lockup" href="#top" aria-label="Phasework home">
           <span className="brand-logo"><img src={logoUrl} alt="" /></span>
-          <span className="brand-name">Phasework</span>
+          <span className="brand-name"><span className="wm-a">Phase</span>work</span>
         </a>
         <nav className="spec" aria-label="Primary navigation">
           <a href="#work">Work</a><span>//</span>
@@ -148,13 +148,15 @@ function Index() {
             <p className="hero-kicker">Hard work made easy to understand.</p>
             <a className="btn hero-cta" href="#work">View films ↓</a>
           </div>
-          <ul className="hero-facts spec">
-            <li>Launch films · Brand stories · VFX · Motion</li>
-            <li>Fortune 300 · YC &amp; a16z-backed clients</li>
-            <li>San Francisco · Los Angeles · Est. 2021</li>
-          </ul>
+          <div className="hero-signal-cell">
+            <div className="hero-signal-top spec">
+              <span>Launch films · Brand stories · VFX · Motion</span>
+              <span>San Francisco · Los Angeles · Est. 2021</span>
+            </div>
+            <p>Make your<br />launch land.</p>
+          </div>
           <div className="hero-quiet-cell" aria-hidden="true"><img src={logoUrl} alt="" /></div>
-          <h1 className="hero-wordmark"><span className="hero-wordmark-fit"><span className="wm" style={{ "--em-width": 8.762 } as CSSProperties}><span className="wm-base">Phasework</span><span className="wm-cut" aria-hidden="true" data-text="Phasework" /></span></span></h1>
+          <h1 className="hero-wordmark"><span className="hero-wordmark-fit"><span className="wm" style={{ "--em-width": 8.762 } as CSSProperties}><span className="wm-base"><span className="wm-a">Phase</span><span className="wm-b">work</span></span><span className="wm-cut" aria-hidden="true" data-a="Phase" data-b="work" /></span></span></h1>
         </section>
 
         <ClientProof />

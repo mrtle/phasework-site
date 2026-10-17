@@ -117,6 +117,7 @@
   .brand-lockup { display: flex; align-items: center; min-width: 0; border-right: 1px solid var(--rule-ink); }
   .brand-logo { display: grid; width: 4rem; height: 4rem; place-items: center; flex: none; background: var(--ink); }
   .brand-logo img { width: 100%; height: 100%; object-fit: contain; }
+  .brand-name .wm-a { color: var(--signal); }
   .brand-name { min-width: 0; padding: 0 1.1rem; font-family: var(--font-wide); font-size: 1.15rem; font-stretch: 125%; font-weight: 800; line-height: 1; text-transform: uppercase; letter-spacing: 0.02em; }
   .masthead-note { display: none; align-items: center; padding: 0 1.5rem; border-right: 1px solid var(--rule-ink); color: var(--ink-2); }
   .masthead nav { display: flex; align-items: center; justify-content: flex-end; gap: 0.55rem; min-width: 0; padding: 0.6rem 0.8rem; white-space: nowrap; }
@@ -127,7 +128,7 @@
   .masthead nav .nav-button:hover { background: var(--signal); color: var(--signal-ink); }
 
   /* ---- Hero: paper plate. Headline + spec sheet on top, the wordmark as a full-width band below. ---- */
-  .hero-plate { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-areas: "word" "kicker" "facts"; border-bottom: 1px solid var(--rule-ink); animation: plate-build 400ms var(--ease) both; }
+  .hero-plate { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-areas: "word" "kicker" "box"; border-bottom: 1px solid var(--rule-ink); animation: plate-build 400ms var(--ease) both; }
   .registration-marks { position: absolute; inset: 0; z-index: 2; pointer-events: none; color: var(--ink); }
   .reg { position: absolute; width: 12px; height: 12px; opacity: 0.4; pointer-events: none; }
   .reg::before, .reg::after { content: ""; position: absolute; background: currentColor; }
@@ -140,9 +141,10 @@
   .hero-title-cell { grid-area: kicker; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; gap: 2rem; min-width: 0; padding: 1.75rem 1rem 1.5rem; border-top: 1px solid var(--rule-ink); }
   .hero-kicker { max-width: 12ch; font-family: var(--font-display); font-size: 2.6rem; font-weight: 700; line-height: 1; letter-spacing: var(--track-h1); text-wrap: balance; }
   .hero-cta { padding-inline: 1.25rem; }
-  /* Three facts, no labels: what, for whom, where. */
-  .hero-facts { grid-area: facts; display: flex; flex-direction: column; justify-content: flex-end; gap: 0.7rem; margin: 0; padding: 1.25rem 1rem 1.5rem; list-style: none; border-top: 1px solid var(--rule-ink); color: var(--ink-2); font-size: 0.8rem; }
-  .hero-facts li { max-width: 40ch; }
+  /* The orange panel: what we make + where on top, the line at the bottom. */
+  .hero-signal-cell { grid-area: box; display: flex; flex-direction: column; justify-content: space-between; gap: 3rem; min-height: 17rem; padding: 1.1rem 1rem 1.25rem; background: var(--signal); color: var(--signal-ink); border-top: 1px solid var(--rule-ink); }
+  .hero-signal-top { display: flex; flex-direction: column; gap: 0.35rem; }
+  .hero-signal-cell p { font-family: var(--font-display); font-size: 2.6rem; font-weight: 700; line-height: 0.98; letter-spacing: var(--track-h1); }
   .hero-quiet-cell { display: none; grid-area: quiet; place-items: center; min-height: 0; background: var(--paper); }
   .hero-quiet-cell img { width: 2.25rem; height: 2.25rem; object-fit: contain; filter: invert(1); mix-blend-mode: multiply; opacity: 0.4; }
   /* Wordmark band: the nav wordmark at hero size, one line, filling the band; stripe fill is the page's one treatment. */
@@ -152,7 +154,11 @@
   /* Signature cut: solid bottom half, and the top half of the same word stripe-filled and slipped one gap left. */
   .wm-base { display: block; clip-path: inset(var(--cut) 0 0 0); }
   .wm-cut { position: absolute; inset: 0; transform: translateX(-0.035em); clip-path: inset(0 0 calc(100% - var(--cut)) 0); pointer-events: none; }
-  .wm-cut::before { content: attr(data-text); display: block; color: transparent; background-image: var(--word-stripes); -webkit-background-clip: text; background-clip: text; }
+  .wm-cut::before, .wm-cut::after { color: transparent; background-image: var(--word-stripes); -webkit-background-clip: text; background-clip: text; white-space: pre; }
+  .wm-cut::before { content: attr(data-a); --word-stripes: repeating-linear-gradient(to bottom, var(--signal) 0 0.028em, transparent 0.028em 0.056em); }
+  .wm-cut::after { content: attr(data-b); }
+  .wm-a { color: var(--signal); }
+  .wm-b { white-space: pre; }
 
   /* ---- "Worked with" conveyor (paper) ---- */
   .client-proof { --client-unit: 1.5rem; --client-gap: 2.25rem; --client-speed: 50s; border-bottom: 1px solid var(--rule-ink); background: var(--paper); }
@@ -239,11 +245,11 @@
   .site-shell { border-inline: 1px solid var(--rule-ink); }
   .masthead { grid-template-columns: 1fr auto; }
   .masthead nav { padding-inline: 1.5rem 0.6rem; }
-  .hero-plate { grid-template-columns: minmax(0, 7fr) minmax(19rem, 5fr) 6rem; grid-template-rows: auto minmax(21rem, auto); grid-template-areas: "word word word" "kicker facts quiet"; }
+  .hero-plate { grid-template-columns: minmax(0, 7fr) minmax(19rem, 5fr) 6rem; grid-template-rows: auto minmax(24rem, auto); grid-template-areas: "word word word" "kicker box quiet"; }
   .hero-title-cell { padding: 2rem 1.5rem 1.75rem; border-right: 1px solid var(--rule-ink); }
   .hero-kicker { font-size: clamp(2.75rem, 5vw, 5.25rem); }
-  .hero-facts { padding: 2rem 1.5rem 1.75rem; border-right: 1px solid var(--rule-ink); font-size: 0.82rem; }
-  .hero-facts li { max-width: none; }
+  .hero-signal-cell { min-height: 0; padding: 1.25rem 1.5rem 1.5rem; border-top: 0; border-right: 1px solid var(--rule-ink); }
+  .hero-signal-cell p { font-size: clamp(2.4rem, 3.4vw, 3.6rem); }
   .hero-quiet-cell { display: grid; border-top: 1px solid var(--rule-ink); }
   .hero-wordmark { padding: 1.4rem 1rem 1.1rem; }
   .client-proof { --client-unit: 2.1rem; --client-gap: 4rem; }
@@ -291,7 +297,8 @@
   .masthead nav .nav-button { min-height: 2.25rem; margin-left: 0; padding: 0 0.7rem; }
   .registration-marks { display: none; }
   .hero-title-cell { gap: 1.5rem; padding: 1.5rem 1rem 1.5rem; }
-  .hero-facts { padding-top: 1.1rem; font-size: 0.72rem; }
+  .hero-signal-cell { min-height: 15rem; }
+  .hero-signal-cell p { font-size: 2.3rem; }
   .hero-wordmark { padding: 0.9rem 0.5rem 0.7rem; }
   .project-meta { grid-template-columns: 3rem minmax(0, 1fr); }
   .project-number { font-size: 1.75rem; }

@@ -49,7 +49,7 @@ function Startups() {
       <header className="masthead plate-rule">
         <Link className="brand-lockup" to="/" aria-label="Phasework home">
           <span className="brand-logo"><img src={logoUrl} alt="" /></span>
-          <span className="brand-name">Phasework</span>
+          <span className="brand-name"><span className="wm-a">Phase</span>work</span>
         </Link>
         <nav className="spec" aria-label="Primary navigation">
           <Link to="/">Work</Link>
@@ -61,16 +61,18 @@ function Startups() {
         <section className="hero-plate animate-build">
           <RegistrationMarks />
           <div className="hero-title-cell">
-            <p className="hero-kicker">Make your launch land.</p>
+            <p className="hero-kicker">Video production for startups.</p>
             <a className="btn hero-cta" href="#contact">Start a project ↓</a>
           </div>
-          <ul className="hero-facts spec">
-            <li>Launch films · Brand stories · VFX · Motion</li>
-            <li>For startups · YC &amp; a16z-backed</li>
-            <li>San Francisco · Los Angeles · Est. 2021</li>
-          </ul>
+          <div className="hero-signal-cell">
+            <div className="hero-signal-top spec">
+              <span>Launch films · Brand stories · VFX · Motion</span>
+              <span>San Francisco · Los Angeles · Est. 2021</span>
+            </div>
+            <p>Make your<br />launch land.</p>
+          </div>
           <div className="hero-quiet-cell" aria-hidden="true"><img src={logoUrl} alt="" /></div>
-          <h1 className="hero-wordmark"><span className="hero-wordmark-fit"><span className="wm" style={{ "--em-width": 10.041 } as CSSProperties}><span className="wm-base">Launch films</span><span className="wm-cut" aria-hidden="true" data-text="Launch films" /></span></span></h1>
+          <h1 className="hero-wordmark"><span className="hero-wordmark-fit"><span className="wm" style={{ "--em-width": 10.041 } as CSSProperties}><span className="wm-base"><span className="wm-a">Launch</span><span className="wm-b"> films</span></span><span className="wm-cut" aria-hidden="true" data-a="Launch" data-b=" films" /></span></span></h1>
         </section>
 
         <CredentialsStrip />
