@@ -145,7 +145,7 @@ function Index() {
         <section className="hero-plate animate-build">
           <RegistrationMarks />
           <div className="hero-title-cell">
-            <p className="hero-kicker">Films for technology companies.</p>
+            <p className="hero-kicker">Hard work made easy to understand.</p>
             <h1>PHASE<span>WORK</span></h1>
           </div>
           <div className="hero-signal-cell">
@@ -216,8 +216,8 @@ function Index() {
             <span className="bracket-state bracket-light">Available worldwide</span>
           </div>
           <div className="studio-statement">
-            <span className="spec">What we do</span>
-            <h2>Hard work made easy to understand.</h2>
+            <span className="spec">Who we work with</span>
+            <h2>For the best, and only the best</h2>
           </div>
           <div className="studio-specs spec">
             <div><span>01</span><strong>Production</strong><p>In-person shoots and direction</p></div>

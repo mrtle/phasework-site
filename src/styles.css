@@ -84,6 +84,11 @@
   to { opacity: 1; clip-path: inset(0); }
 }
 
+@keyframes client-belt {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
 @layer components {
   .site-shell { width: 100%; max-width: 112rem; margin: 0 auto; border-inline: 1px solid var(--border); background: var(--background); }
   .spec { font-size: 0.75rem; font-weight: 500; line-height: 1.5; letter-spacing: 0.08em; text-transform: uppercase; font-variant-numeric: tabular-nums; }
@@ -135,19 +140,19 @@
   .client-proof { border-bottom: 1px solid var(--border); background: var(--background); }
   .client-proof-heading { display: flex; align-items: center; gap: 0.75rem; padding: 0.9rem 1rem 0; color: var(--muted-foreground); }
   .client-proof-heading::before { content: ""; width: 0.4rem; height: 0.4rem; flex: none; background: var(--primary); }
-  .client-logo-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); list-style: none; margin: 0; padding: 0.5rem 0.5rem 1rem; }
-  .client-logo { display: grid; place-items: center; height: 4.5rem; min-width: 0; padding: 1rem; }
-  .client-logo img { display: block; width: 100%; max-width: 7.5rem; height: 2rem; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.8; }
-  .client-logo-symbol img { max-width: 2.25rem; height: 2.25rem; }
-  .client-logo-lovable { align-content: center; gap: 0.4rem; padding-block: 0.5rem; }
-  .client-logo-name { font-family: var(--font-display); font-size: 1rem; font-weight: 800; line-height: 1; letter-spacing: 0; color: var(--foreground); opacity: 0.8; }
-  .client-logo-lovable img { width: 1.8rem; height: 1.8rem; }
+  /* Conveyor belt: two identical tracks side by side, each sliding left by its own width. */
+  .client-proof { --client-unit: 1.5rem; --client-gap: 2.25rem; --client-speed: 55s; }
+  .client-marquee { display: flex; overflow: hidden; padding: 1rem 0 1.25rem; -webkit-mask-image: linear-gradient(90deg, transparent, #000 2.5rem, #000 calc(100% - 2.5rem), transparent); mask-image: linear-gradient(90deg, transparent, #000 2.5rem, #000 calc(100% - 2.5rem), transparent); }
+  .client-track { display: flex; flex: none; align-items: center; gap: var(--client-gap); margin: 0; padding: 0 var(--client-gap) 0 0; list-style: none; animation: client-belt var(--client-speed) linear infinite; }
+  .client-marquee:hover .client-track { animation-play-state: paused; }
+  .client-logo { display: grid; flex: none; justify-items: center; align-content: center; gap: 0.3rem; height: calc(var(--client-unit) * 1.6); }
+  .client-logo img { display: block; width: auto; height: calc(var(--client-unit) * var(--size, 1)); max-width: none; filter: brightness(0) invert(1); opacity: 0.82; transition: opacity 160ms ease; }
+  .client-logo:hover img { opacity: 1; }
+  .client-logo-name { font-family: var(--font-display); font-size: calc(var(--client-unit) * 0.5); font-weight: 800; line-height: 1; letter-spacing: 0; color: var(--foreground); opacity: 0.82; }
   @media (min-width: 768px) {
+    .client-proof { --client-unit: 2.1rem; --client-gap: 4rem; }
     .client-proof-heading { padding: 1rem 1.5rem 0; }
-    .client-logo-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); padding: 0.5rem 0.5rem 1rem; }
-    .client-logo { height: 5.5rem; padding: 1rem 1.25rem; }
-    .client-logo img { max-width: 8.5rem; height: 2.25rem; }
-    .client-logo-symbol img { max-width: 2.5rem; height: 2.5rem; }
+    .client-marquee { padding: 1.25rem 0 1.5rem; -webkit-mask-image: linear-gradient(90deg, transparent, #000 5rem, #000 calc(100% - 5rem), transparent); mask-image: linear-gradient(90deg, transparent, #000 5rem, #000 calc(100% - 5rem), transparent); }
   }
 
   .featured-film { border-bottom: 1px solid var(--border); }
@@ -262,4 +267,8 @@
   html { scroll-behavior: auto; }
   .animate-build { animation: none; }
   .project-plate { transition-duration: 0ms; }
+  /* No belt: show the logos once, wrapped and centred. */
+  .client-marquee { -webkit-mask-image: none; mask-image: none; }
+  .client-track { flex: 1 1 auto; flex-wrap: wrap; justify-content: center; row-gap: 1.5rem; padding-inline: 1rem; animation: none; }
+  .client-track[aria-hidden="true"] { display: none; }
 }
