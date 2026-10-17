@@ -115,9 +115,8 @@
   /* ---- Nav ---- */
   .masthead { display: grid; grid-template-columns: minmax(4rem, 1fr) auto; min-height: 4rem; background: var(--paper); }
   .brand-lockup { display: flex; align-items: center; min-width: 0; border-right: 1px solid var(--rule-ink); }
-  .brand-logo { display: grid; width: 4rem; height: 4rem; place-items: center; flex: none; background: #000; } /* #000 = the V image's own background, so the small image sits invisibly in the square */
-  /* The V glyph fills ~58% of its image; 1.9rem makes it ~1.3× the wordmark cap height (kit lockup rule). */
-  .brand-logo img { width: 1.9rem; height: 1.9rem; object-fit: contain; }
+  .brand-logo { display: grid; width: 4rem; height: 4rem; place-items: center; flex: none; background: var(--ink); }
+  .brand-logo img { width: 100%; height: 100%; object-fit: contain; }
   .brand-name .wm-a { color: var(--signal); }
   .brand-name { min-width: 0; padding: 0 1.1rem; font-family: var(--font-wide); font-size: 1.15rem; font-stretch: 125%; font-weight: 800; line-height: 1; text-transform: uppercase; letter-spacing: 0.02em; }
   .masthead-note { display: none; align-items: center; padding: 0 1.5rem; border-right: 1px solid var(--rule-ink); color: var(--ink-2); }
