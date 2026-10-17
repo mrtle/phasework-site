@@ -99,19 +99,19 @@ export const Route = createFileRoute("/")({
   staticData: { sitemap: true },
   head: () => ({
     meta: [
-      { title: "Phasework — Films for Technology Companies" },
+      { title: "Phasework — Hard Work Made Easy to Understand" },
       {
         name: "description",
         content: "Phasework directs cinematic launch films, brand stories, VFX, and motion for technology companies.",
       },
-      { property: "og:title", content: "Phasework — Films for Technology Companies" },
+      { property: "og:title", content: "Phasework — Hard Work Made Easy to Understand" },
       {
         property: "og:description",
         content: "An independent production studio making technology clear, cinematic, and worth watching.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Phasework — Films for Technology Companies" },
+      { name: "twitter:title", content: "Phasework — Hard Work Made Easy to Understand" },
       {
         name: "twitter:description",
         content: "An independent production studio making technology clear, cinematic, and worth watching.",
