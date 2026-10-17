@@ -9,9 +9,7 @@ import hubspot from "@/assets/clients/hubspot.svg";
 import sundance from "@/assets/clients/sundance.svg";
 import twoK from "@/assets/clients/2k.svg";
 import asus from "@/assets/clients/asus.svg";
-import acura from "@/assets/clients/acura.svg";
 import dji from "@/assets/clients/dji.svg";
-import whiteClaw from "@/assets/clients/white-claw.svg";
 import asana from "@/assets/clients/asana-wordmark.svg";
 import lovable from "@/assets/clients/lovable.svg";
 
@@ -26,7 +24,9 @@ type Client = {
   label?: boolean;
 };
 
-// Edit this list to change the conveyor. Order alternates wordmarks and symbols so the belt has rhythm.
+// Edit this list to change the conveyor. The first two logos (Apple, Netflix) start centred on screen on every
+// page load; the rest alternate wordmarks and symbols so the belt has rhythm. Spare marks for swaps:
+// acura.svg, white-claw.svg in src/assets/clients.
 const clients: Client[] = [
   { name: "Apple", asset: apple, size: 1.2, ratio: 0.81 },
   { name: "Netflix", asset: netflix, size: 0.85, ratio: 3.7 },
@@ -38,9 +38,7 @@ const clients: Client[] = [
   { name: "Sundance Film Festival", asset: sundance, size: 1, ratio: 3.16 },
   { name: "2K", asset: twoK, size: 1, ratio: 1 },
   { name: "ASUS", asset: asus, size: 0.6, ratio: 4.5 },
-  { name: "Acura", asset: acura, size: 1.15, ratio: 0.98 },
   { name: "DJI", asset: dji, size: 1.05, ratio: 1.73 },
-  { name: "White Claw", asset: whiteClaw, size: 1.6, ratio: 0.97 },
   { name: "Asana", asset: asana, size: 0.7, ratio: 5.05 },
   { name: "Lovable", asset: lovable, size: 0.85, ratio: 0.99, label: true },
 ];
@@ -67,14 +65,20 @@ function LogoList({ hidden = false }: { hidden?: boolean }) {
   );
 }
 
-// "Worked with" conveyor: the list renders twice side by side and both copies slide left by
-// their own width, so the belt loops without a seam. Pauses on hover; static and wrapped when
-// the visitor prefers reduced motion.
+// Centre of the first two logos, in conveyor units, so the belt can start with them mid-screen.
+const [first, second] = clients;
+const leadPairCenter = (first.size * first.ratio + second.size * second.ratio) / 2;
+
+// "Worked with" conveyor: the list renders three times side by side and every copy slides left
+// by its own width, so the belt loops without a seam. It starts one copy in, with the lead pair
+// centred (pure CSS, no layout jump). Pauses on hover; static and wrapped when the visitor
+// prefers reduced motion.
 export function ClientProof() {
   return (
     <section className="client-proof" aria-label="Selected clients">
       <h2 className="client-proof-heading spec">Worked with</h2>
-      <div className="client-marquee">
+      <div className="client-marquee" style={{ "--lead-center": leadPairCenter } as CSSProperties}>
+        <LogoList hidden />
         <LogoList />
         <LogoList hidden />
       </div>

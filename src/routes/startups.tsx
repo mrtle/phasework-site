@@ -107,7 +107,7 @@ function Startups() {
         <a className="contact-link" href="mailto:team@phasework.work">team@<br />phasework.work</a>
         <div className="footer-readout spec">
           <span>© 2026 Phasework</span>
-          <div><a href="https://instagram.com" rel="noreferrer" target="_blank">Instagram</a><a href="https://linkedin.com" rel="noreferrer" target="_blank">LinkedIn</a><a href="https://youtube.com" rel="noreferrer" target="_blank">YouTube</a></div>
+          <div><a href="https://www.instagram.com/mwtle/" rel="noreferrer" target="_blank">Instagram</a><a href="https://www.linkedin.com/in/mrtle/" rel="noreferrer" target="_blank">LinkedIn</a><a href="https://www.youtube.com/@mrwtle" rel="noreferrer" target="_blank">YouTube</a></div>
           <a href="#top">Top ↑</a>
         </div>
       </footer>

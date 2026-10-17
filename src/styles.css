@@ -84,9 +84,11 @@
   to { opacity: 1; clip-path: inset(0); }
 }
 
+/* Starts with the lead pair (first two logos of the middle copy) centred: 50cqw is half the belt's
+   visible width, --client-start is the pair's centre inside one copy, -100% skips the first copy. */
 @keyframes client-belt {
-  from { transform: translateX(0); }
-  to { transform: translateX(-100%); }
+  from { transform: translateX(calc(50cqw - var(--client-start) - 100%)); }
+  to { transform: translateX(calc(50cqw - var(--client-start) - 200%)); }
 }
 
 @layer components {
@@ -125,24 +127,25 @@
   .reg::after { top: 0; bottom: 0; left: 50%; width: 1px; }
   .reg-tl { left: 1rem; top: 3.6rem; }.reg-tr { right: 1rem; top: 3.6rem; }.reg-bl { left: 1rem; bottom: 3.6rem; }.reg-br { right: 1rem; bottom: 3.6rem; }
 
+  /* Two stat cells, same anatomy: a big headline on top, a label line at the bottom.
+     Left: FORTUNE 300 / "Clients + startups backed by" [YC mark + name] | [a16z wordmark]. */
   .credentials-strip { display: grid; border-bottom: 1px solid var(--border); background: var(--primary); color: var(--primary-foreground); }
-  .credentials-strip p { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.75rem 1rem; min-width: 0; padding: 1rem; font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; line-height: 1.1; text-transform: uppercase; letter-spacing: -0.01em; }
-  .credentials-strip p + p { border-top: 1px solid color-mix(in oklab, var(--primary-foreground) 25%, transparent); }
-  .credentials-strip strong { font-family: var(--font-display); font-size: 2.75rem; font-weight: 900; line-height: 0.9; letter-spacing: -0.03em; }
-  /* "Fortune 300, [YC] & [a16z]-backed clients": logos sit inline in the sentence, black on orange like the type. */
-  .credentials-strip .credentials-clients { display: flex; flex-wrap: wrap; align-items: center; align-content: flex-start; justify-content: flex-start; gap: 0.5rem 0.55rem; }
-  .credentials-backing { display: inline-flex; align-items: center; gap: 0.2rem; white-space: nowrap; }
-  .credentials-logo { display: block; flex: none; object-fit: contain; filter: brightness(0); }
-  .credentials-logo-yc { width: 1.6rem; height: 1.6rem; }
-  .credentials-logo-a16z { width: 5.05rem; height: 1.6rem; }
-  .credentials-backing-label { white-space: nowrap; }
+  .credentials-stat { display: flex; flex-direction: column; justify-content: space-between; gap: 1.25rem; min-width: 0; padding: 1.25rem 1rem; }
+  .credentials-stat + .credentials-stat { border-top: 1px solid color-mix(in oklab, var(--primary-foreground) 25%, transparent); }
+  .credentials-stat strong { display: block; font-family: var(--font-display); font-size: 2.5rem; font-weight: 900; line-height: 0.9; text-transform: uppercase; letter-spacing: -0.03em; white-space: nowrap; }
+  .credentials-label { font-family: var(--font-display); font-size: 1.05rem; font-weight: 800; line-height: 1.1; text-transform: uppercase; letter-spacing: -0.01em; }
+  .credentials-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 0.85rem 1.25rem; }
+  .credentials-backers { display: flex; align-items: center; gap: 1rem; }
+  .credentials-yc { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; line-height: 1; letter-spacing: -0.01em; white-space: nowrap; }
+  .credentials-yc img { display: block; width: 1.75rem; height: 1.75rem; filter: brightness(0); }
+  .credentials-a16z { display: block; height: 1.9rem; width: auto; aspect-ratio: 75.8 / 24; padding-left: 1rem; border-left: 1px solid color-mix(in oklab, var(--primary-foreground) 35%, transparent); box-sizing: content-box; filter: brightness(0); }
 
   .client-proof { border-bottom: 1px solid var(--border); background: var(--background); }
   .client-proof-heading { display: flex; align-items: center; gap: 0.75rem; padding: 0.9rem 1rem 0; color: var(--muted-foreground); }
   .client-proof-heading::before { content: ""; width: 0.4rem; height: 0.4rem; flex: none; background: var(--primary); }
   /* Conveyor belt: two identical tracks side by side, each sliding left by its own width. */
-  .client-proof { --client-unit: 1.5rem; --client-gap: 2.25rem; --client-speed: 55s; }
-  .client-marquee { display: flex; overflow: hidden; padding: 1rem 0 1.25rem; -webkit-mask-image: linear-gradient(90deg, transparent, #000 2.5rem, #000 calc(100% - 2.5rem), transparent); mask-image: linear-gradient(90deg, transparent, #000 2.5rem, #000 calc(100% - 2.5rem), transparent); }
+  .client-proof { --client-unit: 1.5rem; --client-gap: 2.25rem; --client-speed: 50s; }
+  .client-marquee { --client-start: calc(var(--client-unit) * var(--lead-center, 0) + var(--client-gap) / 2); container-type: inline-size; display: flex; overflow: hidden; padding: 1rem 0 1.25rem; -webkit-mask-image: linear-gradient(90deg, transparent, #000 2.5rem, #000 calc(100% - 2.5rem), transparent); mask-image: linear-gradient(90deg, transparent, #000 2.5rem, #000 calc(100% - 2.5rem), transparent); }
   .client-track { display: flex; flex: none; align-items: center; gap: var(--client-gap); margin: 0; padding: 0 var(--client-gap) 0 0; list-style: none; animation: client-belt var(--client-speed) linear infinite; }
   .client-marquee:hover .client-track { animation-play-state: paused; }
   .client-logo { display: grid; flex: none; justify-items: center; align-content: center; gap: 0.3rem; height: calc(var(--client-unit) * 1.6); }
@@ -216,11 +219,12 @@
   .hero-quiet-cell { border-right: 1px solid var(--border); }
   .section-strip span:nth-child(2) { display: inline; }
   .credentials-strip { grid-template-columns: 1fr 1fr; }
-  .credentials-strip p { min-height: 8rem; padding: 1.5rem; font-size: 1.35rem; }
-  .credentials-strip strong { font-size: 4rem; }
-  .credentials-strip p + p { border-top: 0; border-left: 1px solid var(--rule-light); }
-  .credentials-logo-yc { width: 2rem; height: 2rem; }
-  .credentials-logo-a16z { width: 6.32rem; height: 2rem; }
+  .credentials-stat { min-height: 10rem; padding: 1.5rem; }
+  .credentials-stat + .credentials-stat { border-top: 0; border-left: 1px solid var(--rule-light); }
+  .credentials-stat strong { font-size: clamp(2.25rem, 4.2vw, 4rem); }
+  .credentials-label, .credentials-yc { font-size: 1.25rem; }
+  .credentials-yc img { width: 2.1rem; height: 2.1rem; }
+  .credentials-a16z { height: 2.3rem; padding-left: 1.25rem; }
   .featured-stage { padding: 1.5rem; }
   .feature-meta { grid-template-columns: 5rem minmax(0, 1fr) minmax(14rem, 0.65fr); padding: 1.5rem; align-items: start; }
   .feature-meta h2 { font-size: 3rem; }
@@ -252,9 +256,6 @@
   .masthead nav { justify-content: flex-end; min-width: 0; gap: 0.4rem; padding-inline: 0.65rem; font-size: 0.68rem; }
   .hero-status { align-items: flex-start; gap: 0.4rem 1rem; }
   .hero-title-cell h1 { font-size: 2.75rem; }
-  .credentials-strip p { display: grid; justify-content: stretch; }
-  .credentials-strip .credentials-clients { display: flex; justify-content: flex-start; }
-  .credentials-strip strong { display: block; }
   .project-meta { grid-template-columns: 3.25rem minmax(0, 1fr); }
   .project-number { font-size: 2.25rem; }
   .feature-meta h2 { font-size: 2rem; }
