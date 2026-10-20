@@ -9,6 +9,8 @@ type Project = {
   client: string;
   director: string;
   youtubeUrl: string;
+  /** Optional extra credit shown after the director, e.g. "Produced with Opus 5.5". */
+  note?: string;
 };
 
 // Add or reorder work here. Any standard YouTube link, short link, Shorts link, or embed link works.
@@ -60,6 +62,7 @@ const projects: Project[] = [
     client: "Consumer SaaS",
     director: "Martin Lee",
     youtubeUrl: "https://youtu.be/AtGVx-B0ma8",
+    note: "Produced with Opus 5.5",
   },
 ];
 
@@ -179,7 +182,7 @@ function Index() {
             <span className="project-number">01</span>
             <div>
               <h2>{featured.title}</h2>
-              <p className="spec">{featured.client} · Directed by {featured.director}</p>
+              <p className="spec">{featured.client} · Directed by {featured.director}{featured.note ? ` · ${featured.note}` : ""}</p>
             </div>
           </div>
         </section>
@@ -192,7 +195,7 @@ function Index() {
                 <Film project={project} />
                 <div className="project-meta">
                   <span className="project-number">{number}</span>
-                  <div><h3>{project.title}</h3><p className="spec">{project.client} · Directed by {project.director}</p></div>
+                  <div><h3>{project.title}</h3><p className="spec">{project.client} · Directed by {project.director}{project.note ? ` · ${project.note}` : ""}</p></div>
                 </div>
               </article>
             );
