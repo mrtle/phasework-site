@@ -58,10 +58,10 @@ const projects: Project[] = [
     youtubeUrl: "https://youtu.be/BA5-qtT8ZVY",
   },
   {
-    title: "Introducing Wrap, the Condom for AI.",
+    title: "Introducing Wrap, the Condom for AI",
     client: "Consumer SaaS",
     director: "Martin Lee",
-    youtubeUrl: "https://youtu.be/AtGVx-B0ma8",
+    youtubeUrl: "https://youtu.be/WWCy6JowTvU",
     note: "Produced with Opus 5.5",
   },
 ];
